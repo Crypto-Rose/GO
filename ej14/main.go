@@ -1,7 +1,8 @@
 package main
 
-//"io/ioutl"
-//"log"
+import (
+	"log"
+)
 
 func main() {
 	//Differ: Es una insctruccion que se ejecuta cuando hay un error o un return...
@@ -19,8 +20,19 @@ func main() {
 }
 
 func examplePanic() {
+	defer func() {
+		reco := recover()
+		if reco != nil {
+			log.Fatalf("Ocurrio un error que generó Panic \n %v", reco)
+		}
+	}()
 	a := 1
 	if a == 1 {
-		panic("Find the valor 1")
+		panic("Find the value 1")
 	}
 }
+
+/*"fmt"
+"io/ioutil"
+"log"
+"os"*/
